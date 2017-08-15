@@ -1,4 +1,3 @@
-<a id="http-testkit-java"></a>
 # Route Testkit
 
 akka-http has a testkit that provides a convenient way of testing your routes with JUnit. It allows
@@ -67,9 +66,9 @@ to write assertions using the assertion methods defined on `TestResponse`.
 
 The section above describes how to test a "regular" branch of your route structure, which reacts to incoming requests
 with HTTP response parts or rejections. Sometimes, however, you will want to verify that your service also translates
-@ref[Rejections](rejections.md#rejections-java) to HTTP responses in the way you expect.
+@ref[Rejections](rejections.md) to HTTP responses in the way you expect.
 
-You do this by calling the `seal()` method of the `Route` class. The `seal()` method applies the logic of @ref[ExceptionHandler](exception-handling.md#exception-handling-java) and
+You do this by calling the `seal()` method of the `Route` class. The `seal()` method applies the logic of @ref[ExceptionHandler](exception-handling.md) and
 @ref[RejectionHandler](rejections.md#the-rejectionhandler) passed as method arguments to all exceptions and rejections coming back from the route,
 and translates them to the respective `HttpResponse`.
 
@@ -84,3 +83,19 @@ However, it is impossible to unit test this Route directly using testkit, since 
 empty HTTP request. To test this type of route, embed it in a synthetic route in your test, for example:
 
 @@snip [TestKitFragmentTest.java](../../../../../test/java/docs/http/javadsl/server/testkit/TestKitFragmentTest.java) { #source-quote }
+
+
+## Accounting for Slow Test Systems
+
+The timeouts you consciously defined on your lightning fast development environment might be too tight for your, most
+probably, high-loaded Continuous Integration server, invariably causing spurious failures. To account for such
+situations, timeout durations can be scaled by a given factor on such environments. Check the
+@extref[Akka Docs](akka-docs:java/testing.html#accounting-for-slow-test-systems) for further information.
+
+
+## Increase Timeout
+
+The default timeout when testing your routes using the testkit is 3 seconds. Sometimes, though, this might not be enough.
+In order to extend this default timeout, to say 5 seconds, just override the following method:
+
+@@snip [WithTimeoutTest.java](../../../../../test/java/docs/http/javadsl/server/testkit/WithTimeoutTest.java) { #timeout-setting }

@@ -1,4 +1,3 @@
-<a id="http-model-scala"></a>
 # HTTP Model
 
 Akka HTTP model contains a deeply structured, fully immutable, case-class based model of all the major HTTP data
@@ -85,7 +84,7 @@ In addition to the simple `HttpEntity` constructors which create an entity from 
 as shown here the Akka HTTP model defines a number of subclasses of `HttpEntity` which allow body data to be specified as a
 stream of bytes.
 
-<a id="httpentity-scala"></a>
+<a id="httpentity"></a>
 ## HttpEntity
 
 An `HttpEntity` carries the data bytes of a message together with its Content-Type and, if known, its Content-Length.
@@ -251,7 +250,7 @@ Similarly, a `Transfer-Encoding` header instance that is explicitly added to the
 response will not be rendered onto the wire and trigger a warning being logged instead!
 
 Content-Length
-: The content length of a message is modelled via its [HttpEntity](#httpentity-scala). As such no `Content-Length` header will ever
+: The content length of a message is modelled via its [HttpEntity](#httpentity). As such no `Content-Length` header will ever
 be part of a message's `header` sequence.
 Similarly, a `Content-Length` header instance that is explicitly added to the `headers` of a request or
 response will not be rendered onto the wire and trigger a warning being logged instead!
@@ -301,7 +300,7 @@ Which allows the this CustomHeader to be used in the following scenarios:
 
 @@snip [ModeledCustomHeaderSpec.scala](../../../../../../../akka-http-tests/src/test/scala/akka/http/scaladsl/server/ModeledCustomHeaderSpec.scala) { #matching-examples }
 
-Including usage within the header directives like in the following @ref[headerValuePF](../routing-dsl/directives/header-directives/headerValuePF.md#headervaluepf) example:
+Including usage within the header directives like in the following @ref[headerValuePF](../routing-dsl/directives/header-directives/headerValuePF.md) example:
 
 @@snip [ModeledCustomHeaderSpec.scala](../../../../../../../akka-http-tests/src/test/scala/akka/http/scaladsl/server/ModeledCustomHeaderSpec.scala) { #matching-in-routes }
 

@@ -1,4 +1,3 @@
-<a id="http-java"></a>
 # Akka HTTP
 
 Akka HTTP API - @javadoc:[Javadoc](akka.http.javadsl.package-summary)
@@ -20,6 +19,7 @@ Akka HTTP API - @javadoc:[Javadoc](akka.http.javadsl.package-summary)
 * [client-side/index](client-side/index.md)
 * [server-side-https-support](server-side-https-support.md)
 * [http2](server-side/http2.md)
+* [handling-blocking-operations-in-akka-http-routes](handling-blocking-operations-in-akka-http-routes.md)
 * [migration-guides-java](migration-guide/index.md)
 * [Compatibility Guidelines](compatibility-guidelines.md)
 * [Release Notes](release-notes.md)

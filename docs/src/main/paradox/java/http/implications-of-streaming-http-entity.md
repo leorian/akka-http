@@ -1,4 +1,3 @@
-<a id="implications-of-streaming-http-entities-java"></a>
 # Implications of the streaming nature of Request/Response Entities
 
 Akka HTTP is streaming *all the way through*, which means that the back-pressure mechanisms enabled by Akka Streams
@@ -67,7 +66,7 @@ Note that some directives force an implicit `toStrict` operation, such as `entit
 ### Consuming the HTTP Request Entity (Server)
 
 The simplest way of consuming the incoming request entity is to simply transform it into an actual domain object,
-for example by using the @ref[entity](routing-dsl/directives/marshalling-directives/entity.md#entity-java) directive:
+for example by using the @ref[entity](routing-dsl/directives/marshalling-directives/entity.md) directive:
 
 @@snip [HttpServerExampleDocTest.java](../../../../test/java/docs/http/javadsl/server/HttpServerExampleDocTest.java) { #consume-entity-directive }
 
@@ -99,7 +98,7 @@ effectively hard-aborting the incoming request:
 
 @@snip [HttpServerExampleDocTest.java](../../../../test/java/docs/http/javadsl/server/HttpServerExampleDocTest.java) { #discard-close-connections }
 
-Closing connections is also explained in depth in the @ref[Closing a connection](server-side/low-level-server-side-api.md#http-closing-connection-low-level-java) section of the docs.
+Closing connections is also explained in depth in the @ref[Closing a connection](server-side/low-level-server-side-api.md) section of the docs.
 
 ### Pending: Automatic discarding of not used entities
 

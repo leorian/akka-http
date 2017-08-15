@@ -1,25 +1,24 @@
-<a id="http-client-side"></a>
 # Consuming HTTP-based Services (Client-Side)
 
 All client-side functionality of Akka HTTP, for consuming HTTP-based services offered by other endpoints, is currently
 provided by the `akka-http-core` module.
 
-It is recommended to first read the @ref[Implications of the streaming nature of Request/Response Entities](../implications-of-streaming-http-entity.md#implications-of-streaming-http-entities) section,
+It is recommended to first read the @ref[Implications of the streaming nature of Request/Response Entities](../implications-of-streaming-http-entity.md) section,
 as it explains the underlying full-stack streaming concepts, which may be unexpected when coming
 from a background with non-"streaming first" HTTP Clients.
 
 Depending on your application's specific needs you can choose from three different API levels:
 
-@ref[Request-Level Client-Side API](request-level.md#request-level-api)
+@ref[Request-Level Client-Side API](request-level.md)
 : for letting Akka HTTP perform all connection management. Recommended for most usages.
 
-@ref[Host-Level Client-Side API](host-level.md#host-level-api)
+@ref[Host-Level Client-Side API](host-level.md)
 : for letting Akka HTTP manage a connection-pool to *one specific* host/port endpoint. Recommended when
-  the user can supply a ``Source[HttpRequest, NotUsed]`` with requests to run against a single host
+  the user can supply a @scala[`Source[HttpRequest, NotUsed]`]@java[`Source<HttpRequest, NotUsed>`] with requests to run against a single host
   over multiple pooled connections.
 
-@ref[Connection-Level Client-Side API](connection-level.md#connection-level-api)
-: for full-control over when HTTP connections are opened/closed and how requests are scheduled across them. Only
+@ref[Connection-Level Client-Side API](connection-level.md)
+: for full control over when HTTP connections are opened/closed and how requests are scheduled across them. Only
   recommended for particular use cases.
 
 You can interact with different API levels at the same time and, independently of which API level you choose,

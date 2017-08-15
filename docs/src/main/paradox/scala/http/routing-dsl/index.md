@@ -1,13 +1,12 @@
-<a id="http-high-level-server-side-api"></a>
 # High-level Server-Side API
 
-In addition to the @ref[Low-Level Server-Side API](../low-level-server-side-api.md#http-low-level-server-side-api) Akka HTTP provides a very flexible "Routing DSL" for elegantly
+In addition to the @ref[Low-Level Server-Side API](../server-side/low-level-server-side-api.md) Akka HTTP provides a very flexible "Routing DSL" for elegantly
 defining RESTful web services. It picks up where the low-level API leaves off and offers much of the higher-level
 functionality of typical web servers or frameworks, like deconstruction of URIs, content negotiation or
 static content serving.
 
 @@@ note
-It is recommended to read the @ref[Implications of the streaming nature of Request/Response Entities](../implications-of-streaming-http-entity.md#implications-of-streaming-http-entities) section,
+It is recommended to read the @ref[Implications of the streaming nature of Request/Response Entities](../implications-of-streaming-http-entity.md) section,
 as it explains the underlying full-stack streaming concepts, which may be unexpected when coming
 from a background with non-"streaming first" HTTP Servers.
 @@@
@@ -77,18 +76,18 @@ In this case the "binding future" will fail immediately, and we can react to it 
 
 @@@ note
 For a more low-level overview of the kinds of failures that can happen and also more fine-grained control over them
-refer to the @ref[Handling HTTP Server failures in the Low-Level API](../low-level-server-side-api.md#handling-http-server-failures-low-level-scala) documentation.
+refer to the @ref[Handling HTTP Server failures in the Low-Level API](../server-side/low-level-server-side-api.md#handling-http-server-failures-low-level) documentation.
 @@@
 
 ### Failures and exceptions inside the Routing DSL
 
 Exception handling within the Routing DSL is done by providing `ExceptionHandler` s which are documented in-depth
-in the @ref[Exception Handling](exception-handling.md#exception-handling-scala) section of the documentation. You can use them to transform exceptions into
+in the @ref[Exception Handling](exception-handling.md) section of the documentation. You can use them to transform exceptions into
 `HttpResponse` s with appropriate error codes and human-readable failure descriptions.
 
 ### File uploads
 
-For high level directives to handle uploads see the @ref[FileUploadDirectives](directives/file-upload-directives/index.md#fileuploaddirectives).
+For high level directives to handle uploads see the @ref[FileUploadDirectives](directives/file-upload-directives/index.md).
 
 Handling a simple file upload from for example a browser form with a *file* input can be done
 by accepting a *Multipart.FormData* entity, note that the body parts are *Source* rather than
@@ -108,4 +107,4 @@ and split each line before we send it to an actor for further processing:
 
 ## Configuring Server-side HTTPS
 
-For detailed documentation about configuring and using HTTPS on the server-side refer to @ref[Server-Side HTTPS Support](../server-side-https-support.md#serversidehttps-scala).
+For detailed documentation about configuring and using HTTPS on the server-side refer to @ref[Server-Side HTTPS Support](../server-side-https-support.md).

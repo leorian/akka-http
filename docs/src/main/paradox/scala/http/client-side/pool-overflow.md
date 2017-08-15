@@ -1,14 +1,15 @@
 # Pool overflow and the max-open-requests setting
 
-@ref[Request-Level Client-Side API](request-level.md#request-level-api) and @ref[Host-Level Client-Side API](host-level.md#host-level-api)
+@ref[Request-Level Client-Side API](request-level.md) and @ref[Host-Level Client-Side API](host-level.md)
 use a connection pool underneath. The connection pool will open a limited number of concurrent connections to one host
 (see the `akka.http.host-connection-pool.max-connections` setting). This will limit the rate of requests a pool
 to a single host can handle.
 
 When you use the @ref[stream-based host-level API](host-level.md#using-the-host-level-api-in-a-streaming-fashion)
 stream semantics prevent that the pool is overloaded with requests. On the other side, when a new request is pushed either using
-`Http.singleRequest()` or when materializing too many streams using the same `Http().cachedHostConnectionPool`, requests
-may start to queue up when the rate of new requests is greater than the rate that the pool can process requests.
+@scala[`Http().singleRequest()`]@java[`Http.get(system).singleRequest()`] or when materializing too many streams using the same
+@scala[`Http().cachedHostConnectionPool`]@java[`Http.get(system).cachedHostConnectionPool`], requests may start to queue
+up when the rate of new requests is greater than the rate at which the pool can process requests.
 
 In such a situation `max-open-requests` per host connection pool will be queued to buffer short-term peaks of requests.
 Further requests will fail immediately with a `BufferOverflowException` with a message like this:
@@ -43,7 +44,7 @@ The last point may need a bit more explanation. If some requests are much slower
 a long-running Server Sent Events request than this will block one of the connections of the pool for a long time. If
 there are multiple such requests going on at the same time it will lead to starvation and other requests cannot make any
 progress any more. Make sure to run a long-running request on a dedicated connection (using the
-@ref[Connection-Level Client-Side API](connection-level.md#connection-level-api)) to prevent such a situation.
+@ref[Connection-Level Client-Side API](connection-level.md)) to prevent such a situation.
 
 ## Why does this happen only with Akka Http and not with [insert other client]
 
